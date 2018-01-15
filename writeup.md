@@ -28,8 +28,8 @@ The code for this step is contained in the first code cell of the IPython notebo
 
 I created reference points based on the  chessboard corners. I used these reference points to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function. Using these calibration coefficients, I can undistort the example imagery captured using the same cameras.
 
-![distorted][https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/output_images/distorted.png]
-![undistorted]['output_images/undistorted.png']
+![distorted](https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/output_images/distorted.png)
+![undistorted](https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/output_images/undistorted.png)
 
 ### Pipeline (single images)
 
@@ -39,19 +39,19 @@ I created reference points based on the  chessboard corners. I used these refere
 
 I used a combination of S-channel color thresholding and sobel thresholding to filter image features in a binary format.
 
-![processed]['output_images/processed.png']
+![processed](output_images/processed.png)
 
 #### 3. Perspective Transform
 
 I determined `src` and `dst` points to perform a perspective transform. This transform warped the image ROI into a topdown view so that we could better fit a polynomial to the lane lines. I found that applying the perspective transform prior to the image processing caused the processing to be less effective. I suspect this to be the case since previously sharp edges become blury edges after the transform. This especially would effect the sobel transform.
 
-![topdown]['output_images/topdown.png']
+![topdown](output_images/topdown.png)
 
 #### 4. Sliding box and line fit
 
 Line fitting occured by splitting the images in half so that we could process the left and right lanes individually. By analyzing the the histogram the image ROI, where the image is the processed binary image, we could detect a starting point for the lane. We could have then moved up by the ROI height and searched the entire next row but we know that the next row must be within some margin of the previous detection to be a valid lane. Knowing this, we can constrain our next row search. 
 
-![top_down_processed]['output_images/top_down_processed.png']
+![top_down_processed](output_images/top_down_processed.png)
 
 
 #### 5. Radius and lane offset
@@ -63,7 +63,7 @@ At the end of the `sliding_fit` function, I calculate the radius and lane offset
 
 
 
-![final]['output_images/final.png']
+![final](output_images/final.png)
 
 ---
 
