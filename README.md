@@ -1,4 +1,4 @@
-## Writeup 
+## README 
 
 ---
 
@@ -18,13 +18,11 @@ The goals / steps of this project are the following:
 
 ---
 
-### Writeup / README
+### README
 
 ### Camera Calibration
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
-
-The code for this step is contained in the first code cell of the IPython notebook located in "./examples/example.ipynb" (or in lines # through # of the file called `some_file.py`).  
 
 I created reference points based on the  chessboard corners. I used these reference points to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function. Using these calibration coefficients, I can undistort the example imagery captured using the same cameras.
 
@@ -73,3 +71,15 @@ At the end of the `sliding_fit` function, I calculate the radius and lane offset
 
 Here's a [link to my video result](https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/project_video_solved.avi)
 
+
+--
+
+### Discussion
+
+#### 1. Order of transform and binary image features
+
+I found that the binary feature extraction had to occur before the perspective transformation. By applying the perspective transformation, previously smaller pixels would be stretched. This caused previously sharp lines to become blurred with surrounding pixels. The sobel filter would fail due to the loss of shape edges and the S-channel would fail since the pixels blurred with surrounding colors and caused the s-values to drop below threshold. Applying the perspective transformation after the filters solved the issue.
+
+#### 2. Smoothing lanes over time
+
+Occasionally, shadows or lighting changes would cause the lane detector to fail. By accounting for past predictions, and monitoring for large deviations, I could smooth some of these outlier detections.
