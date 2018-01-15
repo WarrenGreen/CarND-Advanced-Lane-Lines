@@ -28,7 +28,7 @@ The code for this step is contained in the first code cell of the IPython notebo
 
 I created reference points based on the  chessboard corners. I used these reference points to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function. Using these calibration coefficients, I can undistort the example imagery captured using the same cameras.
 
-![distorted][output_images/distorted.png]
+![distorted][https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/output_images/distorted.png]
 ![undistorted]['output_images/undistorted.png']
 
 ### Pipeline (single images)
