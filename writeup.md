@@ -71,5 +71,5 @@ At the end of the `sliding_fit` function, I calculate the radius and lane offset
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result]('https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/project_video_solved.avi')
+Here's a [link to my video result](https://github.com/WarrenGreen/CarND-Advanced-Lane-Lines/blob/master/project_video_solved.avi)
 
